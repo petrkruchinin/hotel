@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Hoteler.Domain.Enums
+namespace Domain.Enums
 {
     /// <summary>
     /// статус комнаты в отеле
