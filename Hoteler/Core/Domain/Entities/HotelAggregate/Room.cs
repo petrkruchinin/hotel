@@ -1,28 +1,28 @@
-﻿using Domain.Enums;
+﻿using Domain.Common;
+using Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Entities
+namespace Domain.Entities.HotelAggregate
 {
     /// <summary>
-    /// комната в отеле
+    /// номер в отеле
     /// </summary>
-    public class Room
+    public class Room : Entity
     {
-        public int Id { get; private set; }
         /// <summary>
         /// этаж
         /// </summary>
         public int Floor { get; private set; }
         /// <summary>
-        /// название комнаты
+        /// название номера
         /// </summary>
         public string Name { get; private set; }
         /// <summary>
-        /// описание комнаты
+        /// описание номера
         /// </summary>
         public string Description { get; private set; }
         /// <summary>
@@ -33,15 +33,15 @@ namespace Domain.Entities
         /// текущий статус номера 
         /// </summary>
         public RoomStatuses CurrentRoomStatus { get; private set; }
+        /// <summary>
+        /// отель, которому принадлежит номер
+        /// </summary>
+        public Guid HotelId { get; private set; }
 
         /// <summary>
-        /// id отеля, к которому привязан номер
+        /// забронированные даты
         /// </summary>
-        public int HotelId { get; private set; }
-        /// <summary>
-        /// ссылка на отель, к которому привязан номер
-        /// </summary>
-        public virtual Hotel Hotel { get; private set; }
+        public virtual ICollection<BookedByDatesRooms> BookedByDatesRooms { get; private set; }
 
 
 

@@ -1,15 +1,16 @@
-﻿using Domain.Enums;
+﻿using Domain.Common;
+using Domain.Entities.UserAggregate;
+using Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Entities
+namespace Domain.Entities.HotelAggregate
 {
-    public class HotelReviews
+    public class HotelReviews : Entity
     {
-        public int Id { get; private set; }
         /// <summary>
         /// отзыв
         /// </summary>
@@ -25,18 +26,14 @@ namespace Domain.Entities
         /// <summary>
         /// id пользователя оставившего отзыв
         /// </summary>
-        public int? ReviewerId { get; private set; }
+        public Guid? ReviewerId { get; private set; }
+        /// <summary>
+        /// отель которому принадлежит отзыв
+        /// </summary>
+        public Guid HotelId { get; private set; }
         /// <summary>
         /// ссылка на пользователя оставившего отзыв
         /// </summary>
         public virtual User? Reviewer { get; private set; }
-        /// <summary>
-        /// id отеля
-        /// </summary>
-        public int HotelId { get; private set; }
-        /// <summary>
-        /// ссылка на отель
-        /// </summary>
-        public virtual Hotel Hotel { get; private set; }
     }
 }
