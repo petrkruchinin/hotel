@@ -1,4 +1,4 @@
-﻿using Domain.Entities;
+﻿using Domain.Entities.HotelAggregate;
 using Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -15,10 +15,8 @@ namespace Persistence.Repositories
         public RoomRepository(RepositoryDbContext dbContext) => _dbContext = dbContext;
 
 
-        public Task<IEnumerable<Room>> GetAllAsync(CancellationToken cancellationToken = default)
-        {
-            throw new NotImplementedException();
-        }
+        public async Task<IEnumerable<Room>> GetAllAsync(CancellationToken cancellationToken = default) =>
+           throw new NotImplementedException();
 
         public Task<Room> GetByIdAsync(int id, CancellationToken cancellationToken = default)
         {
@@ -35,4 +33,8 @@ namespace Persistence.Repositories
             throw new NotImplementedException();
         }
     }
+
+
+    
 }
+

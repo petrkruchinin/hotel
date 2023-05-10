@@ -1,4 +1,4 @@
-﻿using Domain.Entities;
+﻿using Domain.Entities.HotelAggregate;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
