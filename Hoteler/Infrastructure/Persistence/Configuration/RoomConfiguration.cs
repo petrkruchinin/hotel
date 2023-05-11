@@ -22,15 +22,15 @@ namespace Persistence.Configuration
 
             builder.Property(t => t.Name).IsRequired();
             builder.Property(t => t.Number).IsRequired();
-            builder.Property(t => t.Floor);
-            builder.Property(t => t.Description);
+            builder.Property(t => t.Floor).IsRequired(false);
+            builder.Property(t => t.Description).IsRequired(false);
+
             builder.Property(t => t.CurrentRoomStatus)
                 .HasConversion(v => v.ToString(), v => (RoomStatuses)Enum.Parse(typeof(RoomStatuses), v))
                 .IsRequired();
 
             builder.HasMany(t => t.BookedByDatesRooms)
                .WithOne()
-               .HasForeignKey(t => t.RoomId)
                .OnDelete(DeleteBehavior.Cascade);
         }
     }

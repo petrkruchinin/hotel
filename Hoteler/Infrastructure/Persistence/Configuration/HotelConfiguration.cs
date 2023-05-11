@@ -23,7 +23,8 @@ namespace Persistence.Configuration
             builder.Property(t => t.FullAddress).IsRequired();
 
             builder.Property(t => t.Category)
-                .HasConversion(v => v.ToString(), v => (HotelCategories)Enum.Parse(typeof(HotelCategories), v));
+                .HasConversion(v => v.ToString(), v => (HotelCategories)Enum.Parse(typeof(HotelCategories), v))
+                .IsRequired();
 
             builder.HasMany(t => t.Rooms)
                 .WithOne()

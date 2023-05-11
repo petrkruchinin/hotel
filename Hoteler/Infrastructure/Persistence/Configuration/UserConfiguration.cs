@@ -21,11 +21,9 @@ namespace Persistence.Configuration
 
             builder.Property(t => t.FirstName).IsRequired();
             builder.Property(t => t.LastName).IsRequired();
-            builder.Property(t => t.PhoneNumber).IsRequired();
+            builder.Property(t => t.PhoneNumber).IsRequired(false);
             builder.Property(t => t.Email).IsRequired();
             builder.Property(t => t.DateOfBirth).IsRequired();
-
-
         }
     }
 }

@@ -21,12 +21,13 @@ namespace Persistence.Configuration
 
             builder.Property(t => t.BookedDate).IsRequired();
             builder.Property(t => t.IsBooked).IsRequired();
+            builder.Property(t => t.BookingUserId).IsRequired();
 
-            builder.HasOne(t => t.Room)
-                .WithMany();
 
             builder.HasOne(t => t.BookingUser)
-                .WithMany();
+                .WithMany()
+                .HasForeignKey(t => t.BookingUserId)
+                .OnDelete(DeleteBehavior.NoAction);
         }
     }
 }
