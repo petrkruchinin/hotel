@@ -14,7 +14,7 @@ namespace Services.Abstractions
         /// </summary>
         /// <param name="hotelId">id отеля</param>
         /// <returns>перечисление всех номеров в отеле</returns>
-        Task<IEnumerable<RoomDto>> GetRoomsByHotelId(int hotelId, CancellationToken cancellationToken = default);
+        Task<IEnumerable<RoomDto>> GetRoomsByHotelId(Guid hotelId, CancellationToken cancellationToken = default);
         /// <summary>
         /// получить перечисление свободных номеров в отеле по датам въезда и отъезда
         /// </summary>
@@ -23,6 +23,6 @@ namespace Services.Abstractions
         /// <param name="depatureDate">дата отбытия</param>
         /// <returns></returns>
         Task<IEnumerable<RoomDto>> GetRoomsByHotelIdAndRoomStatus(
-            int hotelId, DateTime arrivalDate, DateTime depatureDate, CancellationToken cancellationToken = default);
+            Guid hotelId, DateTime arrivalDate, DateTime depatureDate, CancellationToken cancellationToken = default);
     }
 }

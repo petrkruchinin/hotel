@@ -22,13 +22,13 @@ namespace Domain.Entities.HotelAggregate
         /// </summary>
         public bool IsBooked { get; private set; }
         /// <summary>
-        /// комната, к которой привязана бронь
-        /// </summary>
-        public virtual Room Room { get; private set; }
-        /// <summary>
         /// ссылка на пользователя, забронировавшего номер
         /// </summary>
         public virtual User BookingUser { get; private set; }
+        /// <summary>
+        /// ссылка на пользователя, забронировавшего номер id
+        /// </summary>
+        public Guid BookingUserId { get; private set; }
 
     }
 }

@@ -16,7 +16,7 @@ namespace Domain.Entities.HotelAggregate
         /// <summary>
         /// этаж
         /// </summary>
-        public int Floor { get; private set; }
+        public int? Floor { get; private set; }
         /// <summary>
         /// название номера
         /// </summary>
