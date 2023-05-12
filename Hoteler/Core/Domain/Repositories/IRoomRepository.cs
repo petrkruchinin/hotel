@@ -10,9 +10,7 @@ namespace Domain.Repositories
 {
     public interface IRoomRepository
     {
-        Task<IEnumerable<Room>> GetAllAsync(CancellationToken cancellationToken = default);
-        Task<Room> GetByIdAsync(int id, CancellationToken cancellationToken = default);
-        void Insert(Room room);
-        void Remove(Room room);
+        Task<IEnumerable<Room>> GetRoomsInHotelAsync(Guid hotelId, CancellationToken cancellationToken = default);
+
     }
 }

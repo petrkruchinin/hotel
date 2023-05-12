@@ -8,17 +8,17 @@ namespace Contracts.EntitiesDtos
 {
     public class RoomDto
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         /// <summary>
         /// этаж
         /// </summary>
-        public int Floor { get; set; }
+        public int? Floor { get; set; }
         /// <summary>
-        /// название комнаты
+        /// название номера
         /// </summary>
         public string Name { get; set; }
         /// <summary>
-        /// описание комнаты
+        /// описание номера
         /// </summary>
         public string Description { get; set; }
         /// <summary>
@@ -29,12 +29,14 @@ namespace Contracts.EntitiesDtos
         /// текущий статус номера 
         /// </summary>
         public byte CurrentRoomStatus { get; set; }
-
         /// <summary>
-        /// id отеля, к которому привязан номер
+        /// отель, которому принадлежит номер
         /// </summary>
-        public int HotelId { get; set; }
-        public HotelDto Hotel { get; set; }
+        public Guid HotelId { get; set; }
+        /// <summary>
+        /// забронированные даты
+        /// </summary>
+        public virtual ICollection<BookedByDatesRoomsDto> BookedByDatesRooms { get; private set; }
 
     }
 }

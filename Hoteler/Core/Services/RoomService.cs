@@ -20,20 +20,22 @@ namespace Services
             _repositoryManager = repositoryManager;
         }
 
-        public async Task<IEnumerable<RoomDto>> GetRoomsByHotelId(Guid hotelId, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<RoomDto>> GetRoomsByHotelIdAsync(Guid hotelId, CancellationToken cancellationToken = default)
         {
-            var allRooms = await _repositoryManager.RoomRepository.GetAllAsync(cancellationToken);
-            var roomsInHotel = allRooms.Where(t => t.HotelId == hotelId);
+            try
+            {
+                var roomsInHotel = await _repositoryManager.RoomRepository.GetRoomsInHotelAsync(hotelId, cancellationToken);
 
-            var roomsInHotelDtos = roomsInHotel.Adapt<IEnumerable<RoomDto>>();
+                var roomsInHotelDtos = roomsInHotel.Adapt<List<RoomDto>>();
 
-            return roomsInHotelDtos;
+                return roomsInHotelDtos;
+            }
+            catch(Exception ex)
+            {
+                throw new Exception(ex.Message, ex);
+            }
         }
 
-        public Task<IEnumerable<RoomDto>> GetRoomsByHotelIdAndRoomStatus(
-            Guid hotelId, DateTime arrivalDate, DateTime depatureDate, CancellationToken cancellationToken = default)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

@@ -14,24 +14,15 @@ namespace Persistence.Repositories
         private readonly RepositoryDbContext _dbContext;
         public RoomRepository(RepositoryDbContext dbContext) => _dbContext = dbContext;
 
-
-        public async Task<IEnumerable<Room>> GetAllAsync(CancellationToken cancellationToken = default) =>
-           throw new NotImplementedException();
-
-        public Task<Room> GetByIdAsync(int id, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<Room>> GetRoomsInHotelAsync(Guid hotelId, CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            var roomInHotel = await _dbContext.Rooms.Where(t => t.HotelId == hotelId)
+                .ToListAsync(cancellationToken);
+
+            return roomInHotel; 
         }
 
-        public void Insert(Room room)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Remove(Room room)
-        {
-            throw new NotImplementedException();
-        }
+       
     }
 
 

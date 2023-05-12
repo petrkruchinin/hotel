@@ -8,15 +8,19 @@ namespace Contracts.EntitiesDtos
 {
     public class HotelDto
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         /// <summary>
         /// название отеля
         /// </summary>
         public string Name { get; set; }
         /// <summary>
-        /// месторасположение отеля
+        /// город, в котором находится отель
         /// </summary>
-        public string Location { get; set; }
+        public string Town { get; set; }
+        /// <summary>
+        /// месторасположение отеля (город + адрес)
+        /// </summary>
+        public string FullAddress { get; set; }
         /// <summary>
         /// категория отеля
         /// </summary>
@@ -25,6 +29,10 @@ namespace Contracts.EntitiesDtos
         /// <summary>
         /// номера в отеле
         /// </summary>
-        public virtual IEnumerable<RoomDto> Rooms { get; private set; }
+        public virtual ICollection<RoomDto> Rooms { get; set; }
+        /// <summary>
+        /// отзывы о отеле
+        /// </summary>
+        public virtual ICollection<HotelReviewsDto> HotelReviews { get; set; }
     }
 }
